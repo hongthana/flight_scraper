@@ -15,10 +15,10 @@ import pandas as pd
 import smtplib
 
 # กรอกข้อมูลการเดินทาง
-# city_from = input('สนามบินต้นทาง : (เช่่น BKK) ')
-# city_to = input('สนามบินปลายทาง : (เช่น LHR) ')
-# date_start = input('วันที่ออกเดินทาง : (yyyy-mm-dd) ')
-# date_return = input('วันที่เดินทางกลับ : (yyyy-mm-dd) ')
+city_from = input('สนามบินต้นทาง : (เช่่น BKK) ')
+city_to = input('สนามบินปลายทาง : (เช่น LHR) ')
+date_start = input('วันที่ออกเดินทาง : (yyyy-mm-dd) ')
+date_return = input('วันที่เดินทางกลับ : (yyyy-mm-dd) ')
 
 # For debugging
 #city_from = 'BKK'
@@ -42,7 +42,6 @@ for n in range(0, 5):
 # chromedriver_path = 'C:/{YOUR PATH HERE}/chromedriver_win32/chromedriver.exe'
     
 # ไดเร็กทอรี่เก็บไฟล์ chromedriver สำหรับ mac
-# chromedriver_path = '/Users/thanawatraibroycharoen/desktop/ml/Kayak Scraper/chromedriver'
 # chromedriver_path = '/{YOUR PATH HERE}/chromedriver'
 
 # เปิด Chrome เบราว์เซอร์
@@ -51,19 +50,6 @@ sleep(2)
 
 # รันฟังก์ชั่น open_kayak เพื่อเริ่มดึงราคา
 open_kayak(city_from, city_to, date_start, date_return)
-
-# "LOAD MORE" function
-def load_more():
-    """
-    ฟังก์ชั่นใช้สำหรับโหลดผลลัพธ์เพิ่มเติม
-    """
-    try:
-        more_results = '//a[@class="moreButton"]'
-        driver.find_element_by_xpath(more_results).click()
-        print('ดีเลย์ 45 ถึง 60 วินาที .....')
-        sleep(randint(45, 60))
-    except:
-        pass
 
 # "PAGE SCRAPE" function
 def page_scrape():
