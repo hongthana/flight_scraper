@@ -5,7 +5,7 @@ def page_scrape():
     xpath_sections = '//*[@class="section duration"]'
     sections = driver.find_elements_by_xpath(xpath_sections)
     sections_list = [value.text for value in sections]
-    # แยกระหว่างเที่ยวบินขาออก (o) และเที่ยวบินขาเข้า (i)
+    # แยกระหว่างเที่ยวบินขาออก (out) และเที่ยวบินขาเข้า (in)
     section_out_list = sections_list[::2]
     section_in_list = sections_list[1::2]
     
@@ -44,8 +44,6 @@ def page_scrape():
     in_weekday = [value.split()[1] for value in in_date_list]
     
     # ดึงราคาตั๋วเครื่องบิน
-    # xpath_prices = '//a[@class="booking-link"]/span[@class="price option-text"]' #ดึงราคาของ Kiwi.com มาด้วย ทำให้ error
-    #xpath_prices = '//div[contains(@id,"price-bookingSection")]'
     xpath_prices = '//div[contains(@id,"price-bookingSection")]//span[@class="price option-text"]'
     prices = driver.find_elements_by_xpath(xpath_prices)
     # เอาสัญลักษณ์ค่าเงินบาท "฿" ออก โดยใช้ if เช็คว่ามีค่าอยู่ในตัวแปร price
